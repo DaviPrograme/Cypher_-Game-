@@ -8,10 +8,7 @@ def cifra_vigenere(alphabet):
         table.append([])
         count_rows = 1
         while count_rows <= count_chars:
-            if count_loops + count_rows < count_chars:
-                table[count_loops].append(alphabet[count_loops + count_rows])
-            else:
-                table[count_loops].append(alphabet[count_loops + count_rows - count_chars])
+            table[count_loops].append(alphabet[(count_loops + count_rows) % 26])
             count_rows += 1
         count_loops += 1
     return table
