@@ -1,15 +1,21 @@
 
-def cifra_vigenere(alphabet):
+def cifra_vigenere(alphabet, table_cypher=True):
     count_chars = len(alphabet)
     table = []
     limit_loops = count_chars
     count_loops = 0
     while count_loops < limit_loops:
         table.append([])
-        count_rows = 1
-        while count_rows <= count_chars:
-            table[count_loops].append(alphabet[(count_loops + count_rows) % 26])
-            count_rows += 1
+        if table_cypher:
+            count_rows = 1
+            while count_rows <= count_chars:
+                table[count_loops].append(alphabet[(count_loops + count_rows) % 26])
+                count_rows += 1
+        else:
+            count_rows = 0
+            while count_rows < count_chars:
+                table[count_loops].append(alphabet[(count_loops + count_rows) % 26])
+                count_rows += 1
         count_loops += 1
     return table
 
@@ -31,8 +37,8 @@ def view_vigenere(table):
         linha += 1
 
 
-def enigma2021(pwd, crypt, alphabet):
-    matriz = cifra_vigenere(alphabet)
+def enigma2021(pwd, crypt, alphabet, cypher_table=True):
+    matriz = cifra_vigenere(alphabet, cypher_table)
     index_key = 0
     answer = ""
     keys = index_key_word(pwd, alphabet)
