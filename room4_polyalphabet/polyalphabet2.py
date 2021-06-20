@@ -10,7 +10,7 @@ for char1 in ALPHABET_BASE:
             pwd_test.append(char1)
             pwd_test.append(char2)
             pwd_test.append(char3)
-            answer = enigma2021(pwd_test, CRYPTO, ALPHABET_BASE)
+            answer = enigma2021(pwd_test, CRYPTO)
             if "THE" in answer:
                 print pwd_test
                 print answer

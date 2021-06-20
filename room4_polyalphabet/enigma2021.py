@@ -37,7 +37,8 @@ def view_vigenere(table):
         linha += 1
 
 
-def enigma2021(pwd, crypt, alphabet, cypher_table=True):
+def enigma2021(pwd, crypt, cypher_table=True):
+    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     matriz = cifra_vigenere(alphabet, cypher_table)
     index_key = 0
     answer = ""
