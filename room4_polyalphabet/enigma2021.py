@@ -37,6 +37,26 @@ def view_vigenere(table):
         linha += 1
 
 
+def vigenere_encrypt(pwd, message, cypher_table=True):
+    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    matriz = cifra_vigenere(alphabet, cypher_table)
+    index_key = 0
+    answer = ""
+    keys = index_key_word(pwd, alphabet)
+    for c in message:
+        line = 0
+        colum = 0
+        if index_key >= len(keys):
+            index_key = 0
+        while alphabet[line] != c:
+            line += 1
+        while alphabet[colum] != pwd[index_key]:
+            colum += 1
+        answer = "".join((answer, matriz[line][colum]))
+        index_key += 1
+    return answer
+
+
 def enigma2021(pwd, crypt, cypher_table=True):
     alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     matriz = cifra_vigenere(alphabet, cypher_table)
